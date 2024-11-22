@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>PING</title>
+    <link
+      rel="shortcut icon"
+      href="../assets/favicon-32x32.png"
+      type="image/x-icon"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
+      integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body class="h-screen">
+    <main class="flex flex-col justify-center items-center py-8">
+      <img src="../assets/logo.svg" alt="" />
+      <div class="text-center mt-8">
+        <p class="text-[#969696] text-2xl font-light">
+          We are launching <span class="text-[#151f29] font-bold">soon!</span>
+        </p>
+        <p class="text-[#969696] font-semibold text-sm mt-2">
+          Subscribe and get notified
+        </p>
+      </div>
+      <div
+        class="flex mt-8 w-[50%] md:gap-4 max-md:w-4/6 max-md:flex-col items-center justify-center"
+      >
+        <input
+          type="email"
+          name=""
+          id="input"
+          class="rounded-full border text-[14px] border-[#4f7df3] focus:outline-none px-6 w-full py-2 focus:shadow-md transition-all"
+          placeholder="Your email address"
+        />
+
+        <div class="block md:hidden py-1 ms-4 max-md:w-full">
+          <p class="italic text-red-500 text-sm" id="errormsg"></p>
+        </div>
+
+        <button
+          id="btn"
+          class="bg-[#4f7df3] md:w-44 w-[100%] py-3 px-3 rounded-full text-sm font-semibold text-white shadow-sm shadow-[#4f7df3] transition-all"
+        >
+          Notify Me
+        </button>
+      </div>
+
+      <div class="w-[50%] mt-2 hidden md:block ms-8">
+        <p class="italic text-red-400 self-start text-sm" id="error"></p>
+      </div>
+
+      <img
+        src="../assets/illustration-dashboard.png"
+        class="w-[450px] mt-8 max-sm:w-[300px]"
+        alt=""
+      />
+      <div class="flex mt-8 gap-8">
+        <p
+          class="text-[#4f7df3] cursor-pointer border hover:bg-[#4f7df3] w-8 h-8 flex justify-center items-center rounded-full hover:text-white transition-all"
+        >
+          <i class="fa-brands fa-facebook-f"></i>
+        </p>
+        <p
+          class="text-[#4f7df3] cursor-pointer border hover:bg-[#4f7df3] w-8 h-8 flex justify-center items-center rounded-full hover:text-white transition-all"
+        >
+          <i class="fa-brands fa-twitter"></i>
+        </p>
+        <p
+          class="text-[#4f7df3] cursor-pointer border hover:bg-[#4f7df3] w-8 h-8 flex justify-center items-center rounded-full hover:text-white transition-all"
+        >
+          <i class="fa-brands fa-instagram"></i>
+        </p>
+      </div>
+      <p class="text-[13px] text-[#969696] mt-4">
+        &copy; Copyright Ping. All rights reserved
+      </p>
+    </main>
+
+    <script src="script.js"></script>
+  </body>
+</html>

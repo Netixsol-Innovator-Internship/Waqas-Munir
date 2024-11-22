@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Intro Component Project</title>
+    <link rel="stylesheet" href="style.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
+      integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+  </head>
+  <body>
+    <main
+      class="min-h-screen flex max-md:flex-col max-md:py-16 items-center gap-4 w-[90%] mx-auto"
+    >
+      <div
+        class="text-white h-full md:w-1/2 sm:w-3/4 w-full pe-6 max-md:text-center"
+      >
+        <h1 class="text-4xl font-bold">
+          Learn to code by <br class="hidden md:block" />
+          watching others
+        </h1>
+        <p class="text-sm font-light mt-6 text-balance">
+          See how experienced developers solve problems in real time. Watching
+          scripted tutorials is great, but understanding how developers think is
+          invaluable
+        </p>
+      </div>
+      <div class="md:w-1/2 sm:w-3/4 w-full max-md:mt-8">
+        <div
+          class="shadow-lg rounded-md bg-[#6055a5] flex justify-center items-center py-3 text-white text-sm max-w-[400px]"
+        >
+          <p class="font-bold max-md:text-center">
+            Try it free 7 days
+            <span class="font-normal"
+              >then <br class="block md:hidden" />
+              $20/mo. thereafter</span
+            >
+          </p>
+        </div>
+        <div class="bg-white rounded-md py-8 shadow-lg mt-4">
+          <form
+            id="form"
+            class="flex flex-col justify-center items-center px-6 gap-3"
+          >
+            <div class="relative flex justify-center items-center w-full">
+              <input
+                id="firstName"
+                type="text"
+                class="focus:outline-none border font-semibold rounded-md py-2 w-full px-3 text-sm border-[#b9b6d3] focus:border-black"
+                placeholder="First Name"
+              />
+              <p
+                class="absolute right-4 text-[#ff7a7a] hidden"
+                id="firstName-symbol"
+              >
+                <i class="fa-solid fa-circle-exclamation"></i>
+              </p>
+            </div>
+            <p
+              id="firstName-error"
+              class="italic text-[#ff7a7a] text-xs self-end hidden"
+            >
+              First Name cannot be empty
+            </p>
+
+            <div class="relative flex justify-center items-center w-full">
+              <input
+                id="lastName"
+                type="text"
+                class="focus:outline-none border font-semibold rounded-md py-2 w-full px-3 text-sm border-[#b9b6d3]"
+                placeholder="Last Name"
+              />
+              <p
+                class="absolute right-4 text-[#ff7a7a] hidden"
+                id="lastName-symbol"
+              >
+                <i class="fa-solid fa-circle-exclamation"></i>
+              </p>
+            </div>
+            <p
+              id="lastName-error"
+              class="italic text-[#ff7a7a] text-xs self-end hidden"
+            >
+              Last Name cannot be empty
+            </p>
+
+            <div class="relative flex justify-center items-center w-full">
+              <input
+                id="email"
+                type="text"
+                class="focus:outline-none border font-semibold rounded-md py-2 w-full px-3 text-sm border-[#b9b6d3]"
+                placeholder="Email Address"
+              />
+              <p
+                class="absolute right-4 text-[#ff7a7a] hidden"
+                id="email-symbol"
+              >
+                <i class="fa-solid fa-circle-exclamation"></i>
+              </p>
+            </div>
+            <p
+              id="email-error"
+              class="italic text-[#ff7a7a] text-xs self-end hidden"
+            >
+              Email cannot be empty
+            </p>
+            <div class="relative flex justify-center items-center w-full">
+              <input
+                id="password"
+                type="password"
+                class="focus:outline-none border font-semibold rounded-md py-2 w-full px-3 text-sm border-[#b9b6d3]"
+                placeholder="Password"
+              />
+              <p
+                class="absolute right-4 text-[#ff7a7a] hidden"
+                id="password-symbol"
+              >
+                <i class="fa-solid fa-circle-exclamation"></i>
+              </p>
+            </div>
+            <p
+              id="password-error"
+              class="italic text-[#ff7a7a] text-xs self-end hidden"
+            >
+              Password cannot be empty
+            </p>
+            <button
+              class="mt-2 bg-[rgb(56,204,140)] active:bg-[rgb(56,204,140,0.7)] active: px-3 py-2 w-full text-white text-sm rounded-md"
+            >
+              CLAIM YOUR FREE TRIAL
+            </button>
+            <p class="text-[#b9b6d3] text-[8px] font-bold text-center">
+              By clicking the button, you are agreeing to our
+              <span class="text-[#ff7a7a] cursor-pointer"
+                >Terms and Services</span
+              >
+            </p>
+          </form>
+        </div>
+      </div>
+    </main>
+
+    <script src="script.js"></script>
+  </body>
+</html>

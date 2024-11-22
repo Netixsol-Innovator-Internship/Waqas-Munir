@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Age Calculator</title>
+    <link rel="stylesheet" href="style.css" />
+    <link
+      rel="shortcut icon"
+      href="./assets/images/favicon-32x32.png"
+      type="image/x-icon"
+    />
+  </head>
+  <body class="bg-background">
+    <main class="w-full min-h-screen flex justify-center items-center">
+      <div
+        class="sm:w-[500px] sm:min-h-[300px] bg-white max-xs:w-[98%] min-h-[250px] rounded-2xl rounded-br-[40%] my-12"
+      >
+        <div class="w-full">
+          <form action="" id="form">
+            <div
+              class="flex mx-8 max-xs:mx-2 mt-8 md:gap-8 sm:gap-6 gap-2 max-sm:justify-center"
+            >
+              <div class="flex flex-col gap-2 max-xs:w-[80px]">
+                <label
+                  for="day"
+                  id="day-label"
+                  class="text-secondary font-bold text-[12px]"
+                  >DAY</label
+                >
+                <input
+                  name=""
+                  type="number"
+                  class="border rounded-md py-2 max-w-24 border-secondary font-bold text-xl px-3 max-xs:px-1 max-xs:py-2 max-xs:w-14 max-xs:text-base max-xs:text-center"
+                  id="day"
+                  placeholder="DD"
+                />
+                <p
+                  id="day-error"
+                  class="text-error text-[10px] italic hidden max-sm:w-24"
+                >
+                  This field is required
+                </p>
+              </div>
+              <div class="flex flex-col gap-2 max-xs:w-[80px]">
+                <label
+                  for="month"
+                  class="text-[12px] text-secondary font-bold"
+                  id="month-label"
+                  >MONTH</label
+                >
+                <input
+                  type="number"
+                  class="border rounded-md py-2 max-w-24 border-secondary font-bold text-xl px-3 max-xs:px-1 max-xs:py-2 max-xs:w-14 max-xs:text-base max-xs:text-center"
+                  id="month"
+                  placeholder="MM"
+                />
+                <p
+                  id="month-error"
+                  class="text-error italic hidden text-[10px] max-sm:w-24"
+                >
+                  This field is required
+                </p>
+              </div>
+              <div class="flex flex-col gap-2 max-xs:w-[80px]">
+                <label
+                  for="year"
+                  class="text-secondary font-bold text-[12px]"
+                  id="year-label"
+                  >YEAR</label
+                >
+                <input
+                  type="number"
+                  class="border rounded-md py-2 max-w-24 border-secondary font-bold text-xl px-3 max-xs:px-1 max-xs:py-2 max-xs:w-14 max-xs:text-base max-xs:text-center"
+                  id="year"
+                  placeholder="YYYY"
+                />
+                <p
+                  id="year-error"
+                  class="text-error italic hidden text-[10px] max-sm:w-24"
+                >
+                  This field is required
+                </p>
+              </div>
+            </div>
+
+            <div
+              class="flex w-full justify-center items-center px-8 max-xs:px-6 max-sm:relative max-sm:my-4"
+            >
+              <div class="w-full h-[1px] bg-background my-6"></div>
+              <button class="bg-primary px-4 py-4 rounded-full max-sm:absolute">
+                <img
+                  src="./assets/images/icon-arrow.svg"
+                  alt=""
+                  class="w-6 h-6"
+                />
+              </button>
+            </div>
+          </form>
+        </div>
+        <div class="px-8 max-xs:px-6 pb-8 space-y-2">
+          <div class="flex text-5xl max-xs:text-2xl font-bold italic gap-2">
+            <p class="text-primary" id="year-display">--</p>
+            <p>years</p>
+          </div>
+          <div class="flex text-5xl max-xs:text-2xl font-bold italic gap-2">
+            <p class="text-primary" id="month-display">--</p>
+            <p>months</p>
+          </div>
+          <div class="flex text-5xl max-xs:text-2xl font-bold italic gap-2">
+            <p class="text-primary" id="day-display">--</p>
+            <p>days</p>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <script src="script.js"></script>
+  </body>
+</html>

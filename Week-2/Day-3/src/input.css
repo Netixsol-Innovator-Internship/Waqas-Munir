@@ -1,0 +1,20 @@
+@import url("https://fonts.googleapis.com/css2?family=Overpass:ital,wght@0,100..900;1,100..900&display=swap");
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  font-family: "Overpass", serif;
+}
+
+.active {
+  background-color: white;
+  color: #121417;
+}
+
+.rating.active:hover {
+  background-color: white;
+  color: #121417;
+  cursor: default;
+}

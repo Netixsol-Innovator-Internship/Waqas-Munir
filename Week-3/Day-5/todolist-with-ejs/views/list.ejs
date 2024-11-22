@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Todo List</title>
+  </head>
+  <body>
+    <h1><%= today %></h1>
+
+    <ul>
+      <% for( let i = 0; i < items.length; i++ ) { %>
+      <li><%= items[i] %></li>
+      <% } %>
+
+      <form action="/" method="post">
+        <input type="text" name="todo" />
+        <button>Add</button>
+      </form>
+    </ul>
+  </body>
+</html>

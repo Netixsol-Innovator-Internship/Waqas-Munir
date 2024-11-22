@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Tip Calculator</title>
+    <link rel="stylesheet" href="style.css" />
+    <link
+      rel="shortcut icon"
+      href="./images/favicon-32x32.png"
+      type="image/x-icon"
+    />
+  </head>
+  <body
+    class="bg-[#c5e4e7] flex flex-col sm:py-20 max-sm:pt-12 items-center min-h-screen w-full"
+  >
+    <img src="./images/logo.svg" alt="" />
+    <main
+      class="bg-white grid sm:grid-cols-2 mt-12 sm:rounded-2xl max-sm:rounded-t-2xl px-4 py-4 max-sm:pb-12 shadow-lg"
+    >
+      <div
+        class="rounded-lg md:w-[350px] md:h-[350px] sm:w-[300px] sm:h-[300px] sm:px-6 py-6"
+      >
+        <form class="flex flex-col justify-between space-y-4">
+          <div class="space-y-2">
+            <div class="xs:flex justify-between items-center">
+              <label for="bill" class="text-label font-bold text-[12px]"
+                >Bill</label
+              >
+              <p
+                class="text-[11px] text-red-300 font-bold hidden"
+                id="bill-error"
+              >
+                Can't be zero
+              </p>
+            </div>
+            <div class="flex relative justify-center items-center">
+              <img
+                src="./images/icon-dollar.svg"
+                alt=""
+                class="absolute left-3 w-[10px]"
+              />
+              <input
+                class="bg-bgSecondary w-full rounded-md py-1 px-4 text-right font-bold text-xl focus:outline-primary text-bgPrimary"
+                placeholder="0"
+                id="bill"
+                type="number"
+                min="0"
+                step="0.01"
+              />
+            </div>
+          </div>
+          <div>
+            <div class="xs:flex justify-between items-center">
+              <p class="capitalize text-label font-bold text-[12px]">
+                Select tip %
+              </p>
+              <p
+                class="text-red-300 font-bold text-[11px] hidden"
+                id="tip-error"
+              >
+                Can't be zero
+              </p>
+            </div>
+            <div class="grid xs:grid-cols-3 grid-cols-2 gap-2 mt-3">
+              <div>
+                <button
+                  class="w-full bg-bgPrimary hover:bg-primary hover:text-bgPrimary transition-all rounded-md text-center font-bold text-white py-2 btn"
+                  id="5"
+                  type="button"
+                >
+                  5%
+                </button>
+              </div>
+              <div>
+                <button
+                  class="w-full bg-bgPrimary hover:bg-primary hover:text-bgPrimary transition-all rounded-md text-center font-bold text-white py-2 btn"
+                  id="10"
+                  type="button"
+                >
+                  10%
+                </button>
+              </div>
+              <div>
+                <button
+                  class="w-full bg-bgPrimary hover:bg-primary hover:text-bgPrimary transition-all rounded-md text-center font-bold text-white py-2 btn"
+                  id="15"
+                  type="button"
+                >
+                  15%
+                </button>
+              </div>
+              <div>
+                <button
+                  class="w-full bg-bgPrimary hover:bg-primary hover:text-bgPrimary transition-all rounded-md text-center font-bold text-white py-2 btn"
+                  id="25"
+                  type="button"
+                >
+                  25%
+                </button>
+              </div>
+              <div>
+                <button
+                  class="w-full bg-bgPrimary hover:bg-primary hover:text-bgPrimary transition-all rounded-md text-center font-bold text-white py-2 btn"
+                  id="50"
+                  type="button"
+                >
+                  50%
+                </button>
+                <button class="hidden">hidden</button>
+              </div>
+              <div>
+                <input
+                  type="number"
+                  placeholder="Custom"
+                  class="w-full focus:outline-primary py-2 font-bold rounded-md bg-bgSecondary px-2 text-bgPrimary"
+                  id="custom-tip"
+                  min="1"
+                  max="100"
+                />
+              </div>
+            </div>
+          </div>
+
+          <div class="space-y-2">
+            <div class="xs:flex justify-between items-center">
+              <label for="bill" class="text-label font-bold text-[12px]"
+                >Number of People</label
+              >
+              <p
+                class="text-red-300 font-bold text-[11px] hidden"
+                id="persons-error"
+              >
+                Can't be zero
+              </p>
+            </div>
+            <div class="flex relative justify-center items-center">
+              <img
+                src="./images/icon-person.svg"
+                alt=""
+                class="absolute left-3 w-[10px]"
+              />
+              <input
+                class="bg-bgSecondary w-full rounded-md py-1 px-4 text-right font-bold text-xl focus:outline-primary text-bgPrimary"
+                placeholder="0"
+                id="persons"
+                type="number"
+                min="0"
+              />
+            </div>
+          </div>
+        </form>
+      </div>
+      <div
+        class="bg-bgPrimary rounded-lg md:w-[350px] md:h-[350px] sm:w-[300px] sm:h-[300px] px-6 py-6 flex flex-col justify-between"
+      >
+        <div>
+          <div class="flex items-center justify-between">
+            <p class="text-white max-xs:text-[11px]">
+              Tip Amount <br /><span
+                class="text-secondary text-sm max-xs:text-[11px] leading-tight"
+                >/person</span
+              >
+            </p>
+            <h2 class="xs:text-4xl font-bold text-primary" id="tip">$0.00</h2>
+          </div>
+          <div class="flex items-center justify-between sm:mt-8 mt-4">
+            <p class="text-white max-xs:text-[11px]">
+              Total<br /><span
+                class="text-secondary text-sm max-xs:text-[11px] leading-tight"
+                >/person</span
+              >
+            </p>
+            <h2 class="xs:text-4xl font-bold text-primary" id="total">$0.00</h2>
+          </div>
+        </div>
+        <div>
+          <button
+            class="bg-primary w-full rounded-md py-2 font-semibold max-sm:mt-12 text-bgPrimary"
+            id="reset"
+          >
+            RESET
+          </button>
+        </div>
+      </div>
+    </main>
+
+    <script src="script.js"></script>
+  </body>
+</html>

@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Tables & Forms</title>
+  </head>
+  <body>
+    <!-- Table using column span -->
+
+    <h2>Table using Column Span</h2>
+
+    <table border="2">
+      <tr>
+        <th>Column 1</th>
+        <th>Column 2</th>
+        <th>Column 3</th>
+      </tr>
+      <tr>
+        <td>Row 1,Column 1</td>
+        <td>Row 1, Column 2</td>
+        <td>Row 1,Column 3</td>
+      </tr>
+      <tr>
+        <td colspan="2">Row 2,Column 1 & Column 2</td>
+        <td>Row 2,Column 2</td>
+      </tr>
+      <tr>
+        <td colspan="3">Row 3,Column 1, Column 2 & Column 3</td>
+      </tr>
+    </table>
+
+    <!-- Table using row span -->
+
+    <h2>Table using Row Span</h2>
+
+    <table border="1">
+      <tr>
+        <th>Name</th>
+        <th>Variants</th>
+        <th>Price</th>
+      </tr>
+      <tr>
+        <td>Cups</td>
+        <td>Regular</td>
+        <td>$ 10</td>
+      </tr>
+      <tr>
+        <td rowspan="2">Hoodies</td>
+        <td>White (XL)</td>
+        <td>$ 35</td>
+      </tr>
+      <tr>
+        <td>Black (Med)</td>
+        <td>$ 50</td>
+      </tr>
+    </table>
+
+    <br /><br /><br />
+
+    <!-- Forms with all types of fields -->
+
+    <h2>Forms</h2>
+
+    <form>
+      <label for="name">Name</label>
+      <input type="text" id="name" placeholder="Enter Name" required /><br />
+      <label for="age">Age</label>
+      <input
+        id="age"
+        type="number"
+        placeholder="Enter Age"
+        min="18"
+        max="50"
+        required
+      /><br />
+      <label for="email">Email</label>
+      <input type="email" id="email" placeholder="Enter Email" required /><br />
+      <label for="password">Password</label>
+      <input
+        type="password"
+        id="password"
+        placeholder="Enter Password"
+        required
+      /><br /><br />
+      <input type="checkbox" name="" id="checkbox" required /><label
+        for="checkbox"
+        >Please accept all the term and condition</label
+      ><br />
+      <br />
+      <label for="">Please Select Your Gender</label><br />
+      <input type="radio" name="gender" id="male" required /><label for="male"
+        >Male</label
+      >
+      <input type="radio" name="gender" required id="female" /><label
+        for="female"
+        >Female</label
+      ><br /><br />
+      <label for="msg">Message</label><br />
+      <textarea
+        name=""
+        id="msg"
+        placeholder="Please enter your message"
+        rows="6"
+        cols="100"
+        required
+      ></textarea
+      ><br />
+      <input type="submit" value="Click Me" />
+    </form>
+  </body>
+</html>

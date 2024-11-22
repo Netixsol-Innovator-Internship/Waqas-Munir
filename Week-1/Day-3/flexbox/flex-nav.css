@@ -1,0 +1,30 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.container {
+  background-color: purple;
+  width: 100%;
+  padding: 10px 20px;
+}
+.flex-nav ul {
+  display: flex;
+  justify-content: space-around;
+}
+
+.flex-nav li {
+  list-style: none;
+  font-size: 20px;
+  color: white;
+}
+
+@media (max-width: 768px) {
+  .flex-nav ul {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    text-align: center;
+  }
+}

@@ -1,0 +1,51 @@
+/* Universal Selector */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Element Selector */
+h1 {
+  text-align: center;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+}
+input {
+  margin-top: 20px;
+}
+
+/* Class Selector */
+.form {
+  display: flex;
+  flex-direction: column;
+  width: 50%;
+  margin-top: 30px;
+  margin-left: 50%;
+  transform: translateX(-50%);
+}
+
+/* Id Selector */
+#name {
+  padding: 5px 12px;
+  border-radius: 10px;
+}
+
+/* Attribute Selector */
+input[type="number"] {
+  border: 2px solid green;
+  padding: 5px 12px;
+}
+
+/* Direct Child Selector */
+.form > input {
+  border-radius: 25px;
+  padding: 5px 12px;
+}
+
+/* Sibling selector */
+
+h1 + p {
+  text-align: center;
+  color: grey;
+}

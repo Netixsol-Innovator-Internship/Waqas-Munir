@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Notifications App</title>
+    <link rel="stylesheet" href="style.css" />
+    <link
+      rel="shortcut icon"
+      href="./assets/images/favicon-32x32.png"
+      type="image/x-icon"
+    />
+  </head>
+  <body class="bg-primaryBg">
+    <main class="flex justify-center items-center w-full min-h-screen sm:px-6">
+      <div
+        class="bg-white mx-auto w-full max-sm:w-full sm:w-3/4 lg:w-3/5 md:px-8 sm:px-4 px-2 py-6 rounded-md sm:my-12 shadow-lg"
+      >
+        <div class="flex justify-between items-center max-xs:flex-col">
+          <div>
+            <p class="font-bold sm:text-xl flex items-center">
+              Notifications
+              <span
+                class="sm:ml-2 ml-1 bg-primary text-white rounded-md px-2 text-sm sm:text-base"
+                id="notifications-count"
+                >3</span
+              >
+            </p>
+          </div>
+          <div>
+            <p
+              class="text-primaryText max-sm:text-sm font-semibold cursor-pointer hover:text-primary"
+              id="read-notifications"
+            >
+              Mark all as read
+            </p>
+          </div>
+        </div>
+
+        <div>
+          <ul class="mt-6 space-y-4 max-sm:text-sm">
+            <li
+              class="flex items-center gap-4 bg-[#f7fafd] rounded-md px-3 py-2 relative unread"
+            >
+              <img
+                class="w-10 h-10 sm:w-12 sm:h-12 rounded-full max-sm:self-start"
+                src="./assets/images/avatar-mark-webber.webp"
+                alt="Mark Webber"
+              />
+              <div class="flex-1">
+                <div class="">
+                  <p class="text-primaryText font-semibold inline">
+                    <span
+                      class="font-bold text-secondaryText cursor-pointer hover:text-primary"
+                      >Mark Webber</span
+                    >
+                    <span class="px-1">reacted to your recent post</span>
+                    <span
+                      class="font-bold text-secondaryText cursor-pointer hover:text-primary"
+                      >My first tournament today!</span
+                    >
+                  </p>
+                  <div
+                    class="w-2 h-2 bg-error rounded-full inline-block ms-2 error"
+                  ></div>
+                </div>
+                <p class="text-sm text-primaryText font-semibold">1m ago</p>
+              </div>
+            </li>
+
+            <li
+              class="flex unread items-center gap-4 bg-[#f7fafd] rounded-md px-3 py-2"
+            >
+              <img
+                class="w-10 h-10 sm:w-12 sm:h-12 rounded-full max-sm:self-start"
+                src="./assets/images/avatar-angela-gray.webp"
+                alt="Angela Gray"
+              />
+              <div class="flex-1">
+                <div class="">
+                  <p class="text-primaryText font-semibold inline">
+                    <span
+                      class="font-bold text-secondaryText cursor-pointer hover:text-primary"
+                      >Angela Gray</span
+                    >
+                    <span> followed you</span>
+                  </p>
+                  <div
+                    class="w-2 h-2 bg-error rounded-full ml-2 inline-block error"
+                  ></div>
+                </div>
+                <p class="text-sm text-primaryText font-semibold">5m ago</p>
+              </div>
+            </li>
+
+            <li
+              class="flex items-center gap-4 bg-[#f7fafd] unread rounded-md px-3 py-2"
+            >
+              <img
+                class="w-10 h-10 sm:w-12 sm:h-12 rounded-full max-sm:self-start"
+                src="./assets/images/avatar-jacob-thompson.webp"
+                alt="Jacob Thompson"
+              />
+              <div class="flex-1">
+                <div class="">
+                  <p class="text-primaryText font-semibold inline">
+                    <span
+                      class="font-bold text-secondaryText cursor-pointer hover:text-primary"
+                      >Jacob Thompson</span
+                    >
+                    <span class="px-1">has joined your group</span>
+                    <span
+                      class="font-bold text-secondaryText cursor-pointer hover:text-primary"
+                      >Chess Club</span
+                    >
+                  </p>
+                  <div
+                    class="w-2 h-2 bg-error rounded-full ms-2 inline-block error"
+                  ></div>
+                </div>
+                <p class="text-sm text-primaryText font-semibold">1 day ago</p>
+              </div>
+            </li>
+
+            <li class="flex items-start gap-4 bg-white rounded-md px-3 py-2">
+              <img
+                class="w-10 h-10 sm:w-12 sm:h-12 rounded-full max-sm:self-start"
+                src="./assets/images/avatar-rizky-hasanuddin.webp"
+                alt="Rizky Hasanuddin"
+              />
+              <div class="flex-1">
+                <div class="flex items-center">
+                  <p class="text-primaryText font-semibold">
+                    <span
+                      class="font-bold text-secondaryText cursor-pointer hover:text-primary"
+                      >Rizky Hasanuddin</span
+                    >
+                    <span class="sm:px-1"> sent you a private message</span>
+                  </p>
+                </div>
+                <p class="text-sm text-primaryText font-semibold">5 days ago</p>
+                <div
+                  class="mt-2 border cursor-pointer hover:bg-[#e5effa] text-primaryText px-4 py-3 rounded-md font-semibold"
+                >
+                  Hello, thanks for setting up the Chess Club. I’ve been a
+                  member for a few weeks now and I’m already having lots of fun
+                  and improving my game.
+                </div>
+              </div>
+            </li>
+
+            <li class="flex items-start gap-4 bg-white rounded-md px-3 py-2">
+              <img
+                class="w-10 h-10 sm:w-12 sm:h-12 rounded-full max-sm:self-start"
+                src="./assets/images/avatar-kimberly-smith.webp"
+                alt="Kimberly Smith"
+              />
+              <div class="flex-1">
+                <div class="flex items-center">
+                  <p class="text-primaryText font-semibold">
+                    <span
+                      class="font-bold text-secondaryText cursor-pointer hover:text-primary"
+                      >Kimberly Smith
+                    </span>
+                    <span class="px-1">commented on your picture</span>
+                  </p>
+                </div>
+                <p class="text-sm text-primaryText font-semibold">1 week ago</p>
+              </div>
+              <img
+                class="w-10 h-10 sm:w-12 sm:h-12 rounded-md max-sm:self-start"
+                src="./assets/images/image-chess.webp"
+                alt="Chess Image"
+              />
+            </li>
+
+            <li class="flex items-center gap-4 bg-white rounded-md px-3 py-2">
+              <img
+                class="w-10 h-10 sm:w-12 sm:h-12 rounded-full max-sm:self-start"
+                src="./assets/images/avatar-nathan-peterson.webp"
+                alt="Nathan Peterson"
+              />
+              <div class="flex-1">
+                <div class="flex items-center">
+                  <p class="text-primaryText font-semibold">
+                    <span
+                      class="font-bold text-secondaryText cursor-pointer hover:text-primary"
+                      >Nathan Peterson</span
+                    >
+                    <span class="px-1"> reacted to your recent post</span>
+                    <span
+                      class="font-bold text-secondaryText cursor-pointer hover:text-primary"
+                      >5 end-game strategies to increase your win rate</span
+                    >
+                  </p>
+                </div>
+                <p class="text-sm text-primaryText font-semibold">
+                  2 weeks ago
+                </p>
+              </div>
+            </li>
+
+            <li class="flex items-center gap-4 bg-white rounded-md px-3 py-2">
+              <img
+                class="w-10 h-10 sm:w-12 sm:h-12 rounded-full max-sm:self-start"
+                src="./assets/images/avatar-anna-kim.webp"
+                alt="Anna Kim"
+              />
+              <div class="flex-1">
+                <div class="flex items-center">
+                  <p class="text-primaryText font-semibold">
+                    <span
+                      class="font-bold text-secondaryText cursor-pointer hover:text-primary"
+                      >Anna Kim</span
+                    >
+                    <span class="px-1"> left the group</span>
+                    <span
+                      class="font-bold text-secondaryText cursor-pointer hover:text-primary"
+                      >Chess Club</span
+                    >
+                  </p>
+                </div>
+                <p class="text-sm text-primaryText font-semibold">
+                  2 weeks ago
+                </p>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </main>
+
+    <script src="./script.js"></script>
+  </body>
+</html>

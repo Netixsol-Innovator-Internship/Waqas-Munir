@@ -1,0 +1,157 @@
+<!-- Specifies the document type, all html documents must start with this -->
+<!DOCTYPE html>
+
+<!-- html tag is used as the container for all the other tags -->
+<!-- lang attribute is used to specify language for the web page, assists search engines -->
+<html lang="en">
+  <!-- head tag is used for storing all the metadata related to the page  -->
+  <head>
+    <!-- appears on the page tab in the browser -->
+    <title>HTML</title>
+  </head>
+  <!-- body tag contains all the visual elements of the web page -->
+  <body>
+    <!-- heading tags are used to display tags bigger and bolder so browser can classify them as headings -->
+
+    <h1>This is H1 tag</h1>
+    <h2>This is H2 tag</h2>
+    <h3>This is H3 tag</h3>
+    <h4>This is H4 tag</h4>
+    <h5>This is H5 tag</h5>
+    <h6>This is H6 tag</h6>
+
+    <!-- p tag is used to define a paragraph, used to add text on the webpage. Paragraphs have one blank line before and after them in the ouput -->
+    <p>
+      Lorem ipsum dolor sit amet consectetur, adipisicing elit. Inventore quasi
+      itaque, amet alias est iure eligendi quisquam eius architecto aliquid.
+    </p>
+    <p>
+      Lorem ipsum dolor sit amet consectetur adipisicing elit. Autem dolorum
+      beatae veritatis, aliquid eius neque. Quibusdam saepe ab soluta aut.
+    </p>
+
+    <!-- Link -->
+    <!-- a tag is used for creating hyper links, from where user can navigate from one page to another or can navigate through different section of webpage -->
+    <a href="https://www.google.com">Google</a>
+
+    <!-- br tag is used to create a line break and shift the next element to the next line -->
+    <p>
+      This text will break here <br />
+      and continue here
+    </p>
+
+    <!-- abbr tag is used to define the abbreviation, actual text, which is given in the title attribute, is shown when we hover on it -->
+    <p>
+      <abbr title="Hyper Text Markup Language">HTML</abbr>
+      is not a programming language
+    </p>
+
+    <!-- blockqoute is used to qoute the text which is referenced from anywhere else -->
+    <blockquote>
+      A quotation is the repetition of a sentence, phrase, or passage from
+      speech or text that someone has said or written. In oral speech, it is the
+      representation of an utterance that is introduced by a quotative marker,
+      such as a verb of saying. <br />
+      <cite>Wikepedia</cite>
+    </blockquote>
+
+    <!-- kbd tag is used to define a keyboard input -->
+    <p>Press <kbd>Ctrl</kbd>+<kbd>V</kbd> to paste text</p>
+
+    <!-- code tag is used to define the code snippet on the page -->
+    <p>
+      In javascript, <code>let</code> and <code>const</code> are used to define
+      variables
+    </p>
+
+    <!-- b and strong tags are used for making text bold -->
+
+    <b>This is bold</b>
+    <strong>This is strong</strong>
+
+    <!-- small tag is used to make the text small -->
+    <small>This is small tag</small>
+
+    <!-- sub and sup tags are used for subscripts and superscripts respectively. -->
+    <p>
+      x
+      <sup>2</sup>
+    </p>
+    <p>
+      H
+      <sub>2</sub>
+      O
+    </p>
+
+    <!-- lists -->
+    <!-- ordered list -->
+    <ol>
+      <li>Oranges</li>
+      <li>Bananas</li>
+      <li>Apples</li>
+      <li>Mangoes</li>
+    </ol>
+
+    <!-- unordered list -->
+    <ul>
+      <li>Oranges</li>
+      <li>Bananas</li>
+      <li>Apples</li>
+      <li>Mangoes</li>
+    </ul>
+
+    <!-- description list -->
+    <dl>
+      <dt>Coffee</dt>
+      <dd>Black hot drink</dd>
+      <dt>Milk</dt>
+      <dd>White cold drink</dd>
+    </dl>
+
+    <!-- del and ins -->
+    <p>My fav color is <del>red</del><ins>green</ins></p>
+
+    <!-- used to create a horizontal line -->
+    <hr />
+
+    <!-- mark tag is used to highlight the text -->
+    <p>This is <mark>highlighted</mark></p>
+
+    <!-- bdo tag is used for specifying the direction of the text using dir attribue -->
+
+    <bdo dir="rtl">Hello World</bdo>
+
+    <!-- ELEMENTS -->
+    <!-- for creating a container -->
+    <div></div>
+
+    <!-- Semantic HTML Elements -->
+    <nav></nav>
+    <header></header>
+    <footer></footer>
+    <main></main>
+    <section></section>
+    <aside></aside>
+    <article></article>
+
+    <!-- button is used for triggering any action -->
+    <button>Submit</button>
+
+    <!-- details ==> used with summary for showing the topic -->
+
+    <details>
+      <summary>Waqas Munir</summary>
+      <p>Yeah its me</p>
+    </details>
+
+    <!-- meter is used to show measurements withtin the given range -->
+    <p>Storage</p>
+    <meter value="5" min="0" max="10"></meter>
+
+    <!-- progress is used to show some sort of progress bar on the screen -->
+    <progress value="32" max="100">32%</progress>
+
+    <!-- noscript is used to show the text if user has disabled scripts on the browser -->
+    <noscript> Sorry your browser doesn't support javascript </noscript>
+  </body>
+</html>

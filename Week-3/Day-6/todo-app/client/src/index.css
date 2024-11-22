@@ -1,0 +1,53 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  font-family: "Poppins", sans-serif;
+}
+
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background-color: #dedede;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: #3eb07f;
+  border-radius: 25px;
+}
+
+input[type="checkbox"] {
+  appearance: none;
+  -webkit-appearance: none;
+  height: 25px;
+  width: 25px;
+  cursor: pointer;
+  background: transparent;
+  border: 1px solid grey;
+  border-radius: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+input[type="checkbox"]::after {
+  position: relative;
+  content: "\2713";
+  color: white;
+  transform: scale(0);
+}
+
+input[type="checkbox"]:checked {
+  background-color: #3eb07f;
+  border: 1px solid #3eb07f;
+  transition: all 1s;
+}
+
+input[type="checkbox"]:checked::after {
+  transform: scale(1);
+}
