@@ -1,0 +1,29 @@
+@import url("https://fonts.googleapis.com/css2?family=League+Spartan:wght@100..900&display=swap");
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  font-family: "League Spartan", sans-serif;
+  background-color: hsl(180, 52%, 96%);
+}
+
+.hero {
+  background-image: url("./images/bg-header-desktop.svg");
+  background-color: hsl(180, 29%, 50%);
+  background-size: cover;
+  background-position: right;
+  background-repeat: no-repeat;
+  height: 25vh;
+}
+
+.tag-btn {
+  background-color: rgba(91, 164, 164, 0.2);
+}
+
+@media screen and (max-width: 640px) {
+  .hero {
+    background-position: right center;
+  }
+}
