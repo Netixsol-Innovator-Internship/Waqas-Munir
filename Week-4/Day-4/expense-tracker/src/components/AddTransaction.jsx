@@ -1,5 +1,6 @@
 import React, { useContext, useState } from "react";
 import { GlobalContext } from "../context/GlobalState";
+import { toast } from "react-toastify";
 
 export default function AddTransaction() {
   const { addTransaction } = useContext(GlobalContext);
@@ -9,6 +10,16 @@ export default function AddTransaction() {
 
   function handleSubmit(e) {
     e.preventDefault();
+
+    if (!text.trim()) {
+      toast.error("Please add some text");
+      return;
+    }
+
+    if (+amount === 0) {
+      toast.error("Please add some amount");
+      return;
+    }
 
     const data = {
       text,

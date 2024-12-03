@@ -1,13 +1,11 @@
 import { createContext, useReducer } from "react";
 import AppReducer from "./AppReducer";
+import axios from "axios";
 
 const initialState = {
-  transactions: [
-    { id: 1, text: "Flower", amount: -20 },
-    { id: 2, text: "Salary", amount: 300 },
-    { id: 3, text: "Book", amount: -10 },
-    { id: 4, text: "Camera", amount: 150 },
-  ],
+  transactions: [],
+  error: null,
+  loading: true,
 };
 
 export const GlobalContext = createContext(initialState);
@@ -15,26 +13,60 @@ export const GlobalContext = createContext(initialState);
 export default function GlobalProvider({ children }) {
   const [state, dispatch] = useReducer(AppReducer, initialState);
 
-  function deleteTransaction(id) {
-    dispatch({
-      type: "DELETE",
-      payload: id,
-    });
+  async function getTransactions() {
+    try {
+      const res = await axios.get("http://localhost:5000/transactions");
+      dispatch({
+        type: "GET",
+        payload: res.data.data,
+      });
+    } catch (error) {
+      dispatch({
+        type: "ERROR",
+        payload: error.response.data.error,
+      });
+    }
   }
 
-  function addTransaction(data) {
-    dispatch({
-      type: "ADD",
-      payload: data,
-    });
+  async function deleteTransaction(id) {
+    try {
+      await axios.delete(`http://localhost:5000/transactions/${id}`);
+      dispatch({
+        type: "DELETE",
+        payload: id,
+      });
+    } catch (error) {
+      dispatch({
+        type: "ERROR",
+        payload: error.response.data.error,
+      });
+    }
+  }
+
+  async function addTransaction(data) {
+    try {
+      const res = await axios.post(`http://localhost:5000/transactions`, data);
+      dispatch({
+        type: "ADD",
+        payload: res.data.data,
+      });
+    } catch (error) {
+      dispatch({
+        type: "ERROR",
+        payload: error.response.data.error,
+      });
+    }
   }
 
   return (
     <GlobalContext.Provider
       value={{
         transactions: state.transactions,
+        error: state.error,
+        loading: state.loading,
         deleteTransaction,
         addTransaction,
+        getTransactions,
       }}
     >
       {children}
