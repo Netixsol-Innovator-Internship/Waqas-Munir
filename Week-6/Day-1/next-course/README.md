@@ -1,36 +1,32 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+## Next.js Basics
 
-## Getting Started
+### Server Components vs Client Components
 
-First, run the development server:
+1. Server components
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+   - Components that are rendered on server side and then sent back to client side with filled content. It helps in better SEO
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+2. Client components
+   - Client components are pre-rendered on server side, then hydrated on the client side.
+   - Anything in client component that doesn't require interactivity is still rendered on the server
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+### Static Site Generation
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+- HTML pages are generated at build time. Content is generated when you deploy website, not when user requests it
+- Very Fast, but not suitable for websites that needs frequently updated content
+- Next.js uses it by default
+- It is only suitable for documentations, blogs or marketing pages
 
-## Learn More
+### Incremental Static Generation
 
-To learn more about Next.js, take a look at the following resources:
+- Extension of SSG
+- It builds the HTML page at build time but keeps updating the content after sometime
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+### Server Side Rendering
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+- HTML pages renders on page whenever user requests it, not on deployment time
 
-## Deploy on Vercel
+### Partial Pre Rendering ( New Model )
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+- Combines Static & Dynamic Rendering
+- Allows you to shell static shell of a page while streaming dynamic content
