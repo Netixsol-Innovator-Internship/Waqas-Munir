@@ -9,7 +9,7 @@ export async function GET(request, context) {
 
   const { id } = await context.params;
 
-  const category = await Category.findById(id).populate("parentCategory");
+  const category = await Category.findById(id).populate("parent");
 
   if (!category) {
     return NextResponse.json(

@@ -1,14 +1,12 @@
-import { Schema, model, models, Types } from "mongoose";
+import mongoose, { model, models, Schema } from "mongoose";
 
-const CategorySchema = new Schema({
-  name: {
-    type: String,
-    required: true,
+const CategorySchema = new Schema(
+  {
+    name: { type: String, required: true },
+    parent: { type: mongoose.Types.ObjectId, ref: "Category" },
+    properties: [{ type: Object }],
   },
-  parentCategory: {
-    type: Types.ObjectId,
-    ref: "Category",
-  },
-});
+  { timestamps: true }
+);
 
 export const Category = models?.Category || model("Category", CategorySchema);

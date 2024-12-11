@@ -1,20 +1,40 @@
-import DeleteProductActions from "@/components/DeleteProductActions";
+"use client";
 import Layout from "@/components/Layout";
+import { useParams, useRouter } from "next/navigation";
+import { useEffect, useState } from "react";
 import axios from "axios";
 
-export default async function DeleteProduct({ params }) {
-  const { id } = await params;
-
-  const product = await axios.get(`http://localhost:3000/api/products/${id}`);
-
+export default function DeleteProductPage() {
+  const router = useRouter();
+  const [productInfo, setProductInfo] = useState();
+  const { id } = useParams();
+  useEffect(() => {
+    if (!id) {
+      return;
+    }
+    axios.get(`/api/products/${id}`).then((response) => {
+      setProductInfo(response.data.data);
+    });
+  }, [id]);
+  function goBack() {
+    router.push("/products");
+  }
+  async function deleteProduct() {
+    await axios.delete(`/api/products/${id}`);
+    goBack();
+  }
   return (
     <Layout>
-      <h2 className="text-blue-900 text-lg">
-        Do you really want to delete{" "}
-        <span className="font-semibold">{product.data.data.title}</span> ?
-      </h2>
-      <div className="mt-4">
-        <DeleteProductActions product={product.data.data} />
+      <h1 className="text-center">
+        Do you really want to delete &nbsp;&quot;{productInfo?.title}&quot;?
+      </h1>
+      <div className="flex gap-2 justify-center">
+        <button onClick={deleteProduct} className="btn-red">
+          Yes
+        </button>
+        <button className="btn-default" onClick={goBack}>
+          NO
+        </button>
       </div>
     </Layout>
   );

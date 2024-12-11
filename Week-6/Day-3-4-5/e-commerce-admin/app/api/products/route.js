@@ -6,8 +6,15 @@ import { Product } from "@/models/product";
 export const POST = async (req) => {
   await dbConnect();
 
-  const { title, description, price, images } = await req.json();
-  const product = await Product.create({ title, description, price, images });
+  const { title, description, price, images, category, properties } =
+    await req.json();
+  const product = await Product.create({
+    title,
+    description,
+    price,
+    images,
+    category,
+  });
   return NextResponse.json(
     {
       message: "Product Created",

@@ -1,15 +1,26 @@
-import EditProductForm from "@/components/EditProductForm";
+"use client";
+
 import Layout from "@/components/Layout";
+import { useParams } from "next/navigation";
+import { useEffect, useState } from "react";
 import axios from "axios";
+import ProductForm from "@/components/ProductForm";
 
-export default async function EditProduct({ params }) {
-  const { id } = await params;
-
-  const product = await axios.get(`http://localhost:3000/api/products/${id}`);
-
+export default function EditProductPage() {
+  const [productInfo, setProductInfo] = useState(null);
+  const { id } = useParams();
+  useEffect(() => {
+    if (!id) {
+      return;
+    }
+    axios.get(`/api/products/${id}`).then((response) => {
+      setProductInfo(response.data.data);
+    });
+  }, [id]);
   return (
     <Layout>
-      <EditProductForm product={product.data.data} />
+      <h1>Edit product</h1>
+      {productInfo && <ProductForm {...productInfo} />}
     </Layout>
   );
 }
