@@ -19,7 +19,7 @@
     @apply text-red-500 text-xs mt-1;
   }
   .nav-links {
-    @apply cursor-pointer relative hover:text-primary transition-colors;
+    @apply cursor-pointer relative hover:text-primary transition-colors w-fit;
   }
   .nav-links::after {
     content: "";
@@ -33,5 +33,11 @@
   }
   .nav-links:hover::after {
     width: 100%;
+  }
+}
+
+@layer base {
+  :root {
+    --radius: 0.5rem;
   }
 }

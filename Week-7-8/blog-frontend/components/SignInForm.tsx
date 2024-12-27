@@ -6,7 +6,6 @@ import axios from "axios";
 import { Formik, Field, Form, ErrorMessage } from "formik";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
-import { useEffect } from "react";
 import toast from "react-hot-toast";
 import * as Yup from "yup";
 
@@ -29,10 +28,6 @@ const validationSchema = Yup.object({
 const SignInForm = () => {
   const router = useRouter();
   const { setUserAndToken } = useAuth();
-
-  useEffect(() => {
-    localStorage.clear();
-  }, []);
 
   return (
     <div className="flex justify-center items-center min-h-screen">
@@ -64,9 +59,11 @@ const SignInForm = () => {
               if (error.response.status === 401) {
                 localStorage.setItem(
                   "user",
-                  JSON.stringify(error.response.data.user)
+                  JSON.stringify(error.response?.data?.user)
                 );
                 router.push("/auth/verify-email");
+              } else if (error.response.status === 403) {
+                router.push("/");
               }
             }
           }}

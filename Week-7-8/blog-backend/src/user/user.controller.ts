@@ -1,7 +1,20 @@
-import { Body, Controller, Post, Request, UseGuards } from '@nestjs/common';
+import {
+  Body,
+  Controller,
+  Get,
+  Param,
+  Patch,
+  Post,
+  Query,
+  Request,
+  UseGuards,
+} from '@nestjs/common';
 import { RegisterDto } from './dto/register.dto';
 import { UserService } from './user.service';
 import { LocalAuthGuard } from 'src/guards/local-auth.guard';
+import { JwtAuthGuard } from 'src/guards/jwt-auth.guard';
+import { RolesGuard } from 'src/guards/roles.guard';
+import { Roles } from 'src/decorators/roles.decorator';
 
 @Controller('user')
 export class UserController {
@@ -26,5 +39,24 @@ export class UserController {
   @Post('resend-otp')
   resendOtp(@Body() data: { email: string }) {
     return this.userService.resendOtp(data.email);
+  }
+
+  @Roles('admin')
+  @UseGuards(JwtAuthGuard, RolesGuard)
+  @Get()
+  getUsers(@Query() query: { status?: string }) {
+    const status = query.status ?? '';
+
+    return this.userService.getUsers(status);
+  }
+
+  @Roles('admin')
+  @UseGuards(JwtAuthGuard, RolesGuard)
+  @Patch(':id')
+  updateUserStatus(
+    @Param() params: { id: string },
+    @Body() body: { status: string },
+  ) {
+    return this.userService.updateStatus(params.id, body.status);
   }
 }

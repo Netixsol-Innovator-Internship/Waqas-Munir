@@ -8,10 +8,12 @@ import {
   useContext,
 } from "react";
 
-interface User {
+export interface User {
   _id: string;
   name: string;
   email: string;
+  role: string;
+  status: string;
 }
 
 interface AuthContextType {
@@ -26,12 +28,8 @@ const AuthContext = createContext<AuthContextType | undefined>(undefined);
 export const AuthProvider: React.FC<{ children: ReactNode }> = ({
   children,
 }) => {
-  const [user, setUser] = useState<User | null>(
-    JSON.parse(localStorage.getItem("user") as string) || null
-  );
-  const [token, setToken] = useState<string | null>(
-    localStorage.getItem("token") || null
-  );
+  const [user, setUser] = useState<User | null>(null);
+  const [token, setToken] = useState<string | null>(null);
 
   const setUserAndToken = (newUser: User, newToken: string) => {
     setUser(newUser);
@@ -46,6 +44,16 @@ export const AuthProvider: React.FC<{ children: ReactNode }> = ({
     localStorage.removeItem("user");
     localStorage.removeItem("token");
   };
+
+  useEffect(() => {
+    if (typeof window !== undefined) {
+      if (localStorage.getItem("user")) {
+        setUser(JSON.parse(localStorage.getItem("user") as string));
+      }
+      if (localStorage.getItem("token"))
+        setToken(localStorage.getItem("token"));
+    }
+  }, []);
 
   return (
     <AuthContext.Provider value={{ user, token, setUserAndToken, clearAuth }}>

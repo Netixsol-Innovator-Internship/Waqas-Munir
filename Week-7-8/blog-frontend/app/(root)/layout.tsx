@@ -14,7 +14,7 @@ export default function BlogLayout({
   return (
     <>
       <Navbar />
-      <main className="px-16 py-4 bg-gray-200 dark:bg-darkBg dark:text-white">
+      <main className="px-16 py-4 max-sm:px-4 max-xs:px-2 bg-gray-200 dark:bg-darkBg dark:text-white">
         {children}
       </main>
     </>

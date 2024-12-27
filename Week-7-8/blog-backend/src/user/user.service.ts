@@ -1,33 +1,34 @@
 import {
   BadRequestException,
   ConflictException,
+  ForbiddenException,
   Injectable,
   NotFoundException,
   UnauthorizedException,
 } from '@nestjs/common';
-import { InjectRepository } from '@nestjs/typeorm';
-import { User } from './entities/user.entities';
-import { Repository } from 'typeorm';
 import * as bcrypt from 'bcryptjs';
 import { RegisterDto } from './dto/register.dto';
 import { MailService } from 'src/mail/mail.service';
 import { generateOTP } from 'utils';
 import { JwtService } from '@nestjs/jwt';
+import { InjectModel } from '@nestjs/mongoose';
+import { User } from './schemas/user.schema';
+import mongoose, { Model } from 'mongoose';
 
 @Injectable()
 export class UserService {
   constructor(
-    @InjectRepository(User) private userRepository: Repository<User>,
+    @InjectModel(User.name) private userModel: Model<User>,
     private mailService: MailService,
     private jwtSerive: JwtService,
   ) {}
 
   async findUserByEmail(email: string): Promise<User | undefined> {
-    return await this.userRepository.findOne({ where: { email } });
+    return await this.userModel.findOne({ email });
   }
 
   async findUserById(id: number): Promise<User | undefined> {
-    return await this.userRepository.findOne({ where: { id } });
+    return await this.userModel.findOne({ id });
   }
 
   async hashPassword(password: string): Promise<string> {
@@ -47,18 +48,18 @@ export class UserService {
 
     const hashedPassword = await this.hashPassword(registerDto.password);
 
-    const newUser = this.userRepository.create({
+    const newUser = new this.userModel({
       name: registerDto.name,
       email: registerDto.email,
       password: hashedPassword,
       role: registerDto.role,
     });
-    await this.userRepository.save(newUser);
+    await newUser.save();
 
     const otp = generateOTP();
     newUser.otp_code = otp;
     newUser.otp_expiry_time = new Date(Date.now() + 15 * 60 * 1000);
-    await this.userRepository.save(newUser);
+    await newUser.save();
 
     await this.mailService.sendOTP(newUser.email, otp);
 
@@ -85,7 +86,7 @@ export class UserService {
     user.otp_expiry_time = null;
     user.email_verified = true;
 
-    await this.userRepository.save(user);
+    await user.save();
 
     return 'Verification Successfull';
   }
@@ -97,7 +98,7 @@ export class UserService {
     const newOtp = generateOTP();
     user.otp_code = newOtp;
     user.otp_expiry_time = new Date(Date.now() + 15 * 60 * 1000);
-    await this.userRepository.save(user);
+    await user.save();
 
     await this.mailService.sendOTP(email, newOtp);
 
@@ -117,6 +118,9 @@ export class UserService {
     const user = await this.findUserByEmail(credentials.email);
     if (!user) throw new NotFoundException('Invalid Credentials');
 
+    if (user.status === 'blocked')
+      throw new ForbiddenException('You have been blocked by this site');
+
     if (!user.email_verified)
       throw new UnauthorizedException({
         message: "'Please verify your email to continue'",
@@ -132,6 +136,34 @@ export class UserService {
   }
 
   generateToken(user: User) {
-    return this.jwtSerive.sign({ sub: user.id, email: user.email });
+    return this.jwtSerive.sign({
+      sub: user.id,
+      email: user.email,
+      role: user.role,
+    });
+  }
+
+  async getUsers(status: string) {
+    const filter: any = { role: { $ne: 'admin' } };
+    if (status) {
+      filter.status = status;
+    }
+
+    const users = await this.userModel.find(filter).sort({ createdAt: -1 });
+    return users;
+  }
+
+  async updateStatus(id: string, status: string) {
+    if (!mongoose.Types.ObjectId.isValid(id))
+      throw new NotFoundException("Can't find this user");
+
+    const user = await this.userModel.findById(new mongoose.Types.ObjectId(id));
+
+    if (!user) throw new NotFoundException('User not found');
+
+    user.status = status;
+    await user.save();
+
+    return user;
   }
 }
