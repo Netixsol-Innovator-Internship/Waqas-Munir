@@ -31,7 +31,7 @@ export default function UserProfile() {
     setLoading(true);
     try {
       const response = await axios.get(
-        `http://localhost:8000/blogs/user/${id}`
+        `https://blog-backend-cyan-xi.vercel.app/blogs/user/${id}`
       );
       setBlogs(response.data);
     } catch (error) {

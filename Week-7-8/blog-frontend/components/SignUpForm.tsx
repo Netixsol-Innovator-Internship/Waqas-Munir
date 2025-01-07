@@ -51,7 +51,7 @@ const SignUpForm = () => {
           onSubmit={async (values) => {
             try {
               const response = await axios.post(
-                "http://localhost:8000/user/signup",
+                "https://blog-backend-cyan-xi.vercel.app/user/signup",
                 values
               );
               toast.success("Signup Successfull");

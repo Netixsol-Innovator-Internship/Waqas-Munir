@@ -10,11 +10,15 @@ export default async function AddBlogPage({
   const { blogId } = await searchParams;
   let blog: undefined;
   if (blogId) {
-    const res = await axios.get(`http://localhost:8000/blogs/${blogId}`);
+    const res = await axios.get(
+      `https://blog-backend-cyan-xi.vercel.app/blogs/${blogId}`
+    );
     blog = res.data;
   }
 
-  const response = await axios.get("http://localhost:8000/category");
+  const response = await axios.get(
+    "https://blog-backend-cyan-xi.vercel.app/category"
+  );
   const categories = response.data;
   return (
     <div>

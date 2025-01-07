@@ -5,11 +5,12 @@ import axios from "axios";
 import { showError } from "@/utils/errorHandler";
 import toast from "react-hot-toast";
 import { useRouter } from "next/navigation";
+import { useAuth, User } from "@/context/AuthContext";
 
 const OtpInput = () => {
   const [otp, setOtp] = useState(Array(6).fill(""));
   const [emailSent, setEmailSent] = useState(true);
-  const user = JSON.parse(localStorage.getItem("user") as string);
+  const { user } = useAuth();
   const router = useRouter();
 
   const handleChange = (
@@ -52,8 +53,8 @@ const OtpInput = () => {
 
     try {
       const response = await axios.post(
-        "http://localhost:8000/user/verify-email",
-        { email: user.email, otp: Number(otpString) }
+        "https://blog-backend-cyan-xi.vercel.app/user/verify-email",
+        { email: user?.email, otp: Number(otpString) }
       );
       toast.success(response.data);
       router.push("/auth/signin");
@@ -66,8 +67,8 @@ const OtpInput = () => {
   const handleResend = async () => {
     try {
       const response = await axios.post(
-        "http://localhost:8000/user/resend-otp",
-        { email: user.email }
+        "https://blog-backend-cyan-xi.vercel.app/user/resend-otp",
+        { email: user?.email }
       );
       toast.success(response.data.message);
     } catch (error) {
@@ -87,7 +88,7 @@ const OtpInput = () => {
               target="_blank"
               rel="noopener noreferrer"
             >
-              {user.email}
+              {user?.email}
             </a>
             .
           </p>

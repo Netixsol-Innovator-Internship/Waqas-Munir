@@ -68,7 +68,7 @@ export default function BlogForm({
     setImageLoading(true);
     try {
       const response = await axios.post(
-        "http://localhost:8000/upload/image",
+        "https://blog-backend-cyan-xi.vercel.app/upload/image",
         formData,
         {
           headers: {
@@ -92,7 +92,7 @@ export default function BlogForm({
     try {
       if (blog) {
         await axios.patch(
-          `http://localhost:8000/blogs/${blog._id}`,
+          `https://blog-backend-cyan-xi.vercel.app/blogs/${blog._id}`,
           {
             ...values,
             thumbnail: thumbnailUrl,
@@ -108,7 +108,7 @@ export default function BlogForm({
         router.push(`/user/${user?._id}`);
       } else {
         await axios.post(
-          "http://localhost:8000/blogs",
+          "https://blog-backend-cyan-xi.vercel.app/blogs",
           {
             ...values,
             thumbnail: thumbnailUrl,

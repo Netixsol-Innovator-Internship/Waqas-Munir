@@ -10,9 +10,9 @@ import {
   Request,
   UseGuards,
 } from '@nestjs/common';
-import { Roles } from 'src/decorators/roles.decorator';
-import { JwtAuthGuard } from 'src/guards/jwt-auth.guard';
-import { RolesGuard } from 'src/guards/roles.guard';
+import { Roles } from '..//user/roles.decorator';
+import { JwtAuthGuard } from '../user/jwt-auth.guard';
+import { RolesGuard } from '../user/roles.guard';
 import { CreateBlogDto } from './dto/create-blog.dto';
 import { BlogsService } from './blogs.service';
 import { UpdateBlogDto } from './dto/update-blog.dto';

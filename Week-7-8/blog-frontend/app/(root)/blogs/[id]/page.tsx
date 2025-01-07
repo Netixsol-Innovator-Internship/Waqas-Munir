@@ -10,7 +10,9 @@ export default async function SingleBlogPage({
 }) {
   const { id } = await params;
 
-  const response = await axios.get(`http://localhost:8000/blogs/${id}`);
+  const response = await axios.get(
+    `https://blog-backend-cyan-xi.vercel.app/blogs/${id}`
+  );
   const blog: Blog = response.data;
 
   return (

@@ -42,7 +42,7 @@ const SignInForm = () => {
           onSubmit={async (values) => {
             try {
               const response = await axios.post(
-                "http://localhost:8000/user/signin",
+                "https://blog-backend-cyan-xi.vercel.app/user/signin",
                 values
               );
               toast.success("Signin Successfull");
@@ -61,6 +61,7 @@ const SignInForm = () => {
                   "user",
                   JSON.stringify(error.response?.data?.user)
                 );
+                setUserAndToken(error.response?.data?.user, "");
                 router.push("/auth/verify-email");
               } else if (error.response.status === 403) {
                 router.push("/");

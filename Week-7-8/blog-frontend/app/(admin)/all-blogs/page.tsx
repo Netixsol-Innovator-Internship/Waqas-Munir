@@ -38,16 +38,22 @@ export default function AdminBlogsPage() {
   async function fetchBlogs() {
     try {
       const [unapprovedResponse, approvedResponse] = await Promise.all([
-        axios.get("http://localhost:8000/blogs/all?status=unapproved", {
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
-        }),
-        axios.get("http://localhost:8000/blogs/all?status=approved", {
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
-        }),
+        axios.get(
+          "https://blog-backend-cyan-xi.vercel.app/blogs/all?status=unapproved",
+          {
+            headers: {
+              Authorization: `Bearer ${token}`,
+            },
+          }
+        ),
+        axios.get(
+          "https://blog-backend-cyan-xi.vercel.app/blogs/all?status=approved",
+          {
+            headers: {
+              Authorization: `Bearer ${token}`,
+            },
+          }
+        ),
       ]);
 
       setUnapprovedBlogs(unapprovedResponse.data);

@@ -6,8 +6,7 @@ import {
 } from '@nestjs/common';
 import { FileInterceptor } from '@nestjs/platform-express';
 import { CloudinaryService } from '../cloudinary/cloudinary.service';
-import { diskStorage } from 'multer';
-import { extname } from 'path';
+import { memoryStorage } from 'multer';
 
 @Controller('upload')
 export class FileUploadController {
@@ -16,13 +15,7 @@ export class FileUploadController {
   @Post('image')
   @UseInterceptors(
     FileInterceptor('file', {
-      storage: diskStorage({
-        destination: './uploads',
-        filename: (req, file, cb) => {
-          const fileName = `${Date.now()}${extname(file.originalname)}`;
-          cb(null, fileName);
-        },
-      }),
+      storage: memoryStorage(),
     }),
   )
   async uploadFile(@UploadedFile() file) {
@@ -30,7 +23,8 @@ export class FileUploadController {
       throw new Error('No file uploaded');
     }
 
-    const imageUrl = await this.cloudinaryService.uploadImage(file);
+    // Pass the file buffer to your Cloudinary service for upload
+    const imageUrl = await this.cloudinaryService.uploadImage(file.buffer);
     return { url: imageUrl };
   }
 }

@@ -8,8 +8,7 @@ import {
 } from '@nestjs/common';
 import * as bcrypt from 'bcryptjs';
 import { RegisterDto } from './dto/register.dto';
-import { MailService } from 'src/mail/mail.service';
-import { generateOTP } from 'utils';
+import { MailService } from '../mail/mail.service';
 import { JwtService } from '@nestjs/jwt';
 import { InjectModel } from '@nestjs/mongoose';
 import { User } from './schemas/user.schema';
@@ -42,6 +41,10 @@ export class UserService {
     return await bcrypt.compare(password, hashPassword);
   }
 
+  generateOTP(): number {
+    return Math.floor(100000 + Math.random() * 900000);
+  }
+
   async signUp(registerDto: RegisterDto) {
     const user = await this.findUserByEmail(registerDto.email);
     if (user) throw new ConflictException('Email already exists');
@@ -56,7 +59,7 @@ export class UserService {
     });
     await newUser.save();
 
-    const otp = generateOTP();
+    const otp = this.generateOTP();
     newUser.otp_code = otp;
     newUser.otp_expiry_time = new Date(Date.now() + 15 * 60 * 1000);
     await newUser.save();
@@ -95,7 +98,7 @@ export class UserService {
     const user = await this.findUserByEmail(email);
     if (!user) throw new NotFoundException("Email doesn't exists");
 
-    const newOtp = generateOTP();
+    const newOtp = this.generateOTP();
     user.otp_code = newOtp;
     user.otp_expiry_time = new Date(Date.now() + 15 * 60 * 1000);
     await user.save();

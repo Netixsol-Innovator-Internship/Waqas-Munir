@@ -42,7 +42,9 @@ export default function CategoriesPage() {
 
   async function getCategories() {
     try {
-      const response = await axios.get("http://localhost:8000/category");
+      const response = await axios.get(
+        "https://blog-backend-cyan-xi.vercel.app/category"
+      );
       setCategories(response.data);
     } catch (error) {
       const err = showError(error);
@@ -69,7 +71,7 @@ export default function CategoriesPage() {
   async function deleteCategory(id: string) {
     try {
       const response = await axios.delete(
-        `http://localhost:8000/category/${id}`,
+        `https://blog-backend-cyan-xi.vercel.app/category/${id}`,
         {
           headers: {
             Authorization: `Bearer ${token}`,

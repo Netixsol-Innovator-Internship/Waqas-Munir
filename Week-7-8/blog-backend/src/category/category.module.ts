@@ -3,7 +3,7 @@ import { CategoryController } from './category.controller';
 import { CategoryService } from './category.service';
 import { MongooseModule } from '@nestjs/mongoose';
 import { Category, CategorySchema } from './schemas/category.schema';
-import { JwtStrategy } from 'src/user/jwt.strategy';
+import { JwtStrategy } from '../user/jwt.strategy';
 
 @Module({
   imports: [

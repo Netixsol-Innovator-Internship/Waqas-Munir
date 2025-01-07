@@ -3,7 +3,9 @@ import axios from "axios";
 import Link from "next/link";
 
 export default async function Home() {
-  const response = await axios.get("http://localhost:8000/blogs");
+  const response = await axios.get(
+    "https://blog-backend-cyan-xi.vercel.app/blogs"
+  );
 
   const blogs: Blog[] = response.data.splice(0, 3);
 

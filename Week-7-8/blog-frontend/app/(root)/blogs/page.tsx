@@ -9,20 +9,23 @@ export default async function BlogPage({
 }: {
   searchParams: Promise<{ [key: string]: string | string[] | undefined }>;
 }) {
-  let { category, status } = await searchParams;
+  let { status } = await searchParams;
+  const { category } = await searchParams;
   const decodedCategory = category
     ? decodeURIComponent(category as string)
     : "";
 
   status = status ? decodeURIComponent(status as string) : "";
 
-  const res = await axios.get("http://localhost:8000/category");
+  const res = await axios.get(
+    "https://blog-backend-cyan-xi.vercel.app/category"
+  );
   const categories: Category[] = res.data;
 
   const selectedCategory = categories.find((d) => d.name === decodedCategory);
 
   const response = await axios.get(
-    `http://localhost:8000/blogs?category=${selectedCategory?._id}&status=${status}`
+    `https://blog-backend-cyan-xi.vercel.app/blogs?category=${selectedCategory?._id}&status=${status}`
   );
 
   console.log(response.data);

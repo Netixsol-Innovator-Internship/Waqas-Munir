@@ -14,7 +14,7 @@ export default function AdminBlogActions({ blog }: { blog: Blog }) {
   async function approveBlog(id: string) {
     try {
       await axios.patch(
-        `http://localhost:8000/blogs/status/${id}`,
+        `https://blog-backend-cyan-xi.vercel.app/blogs/status/${id}`,
         { status: "approved" },
         {
           headers: { Authorization: `Bearer ${token}` },
@@ -32,7 +32,7 @@ export default function AdminBlogActions({ blog }: { blog: Blog }) {
   async function disapproveBlog(id: string) {
     try {
       await axios.patch(
-        `http://localhost:8000/blogs/status/${id}`,
+        `https://blog-backend-cyan-xi.vercel.app/blogs/status/${id}`,
         { status: "disapproved" },
         {
           headers: { Authorization: `Bearer ${token}` },

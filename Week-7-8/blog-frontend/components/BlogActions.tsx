@@ -19,11 +19,14 @@ export default function BlogActions({ blog, onFetch }: BlogActionsProps) {
 
   const handleDelete = async (id: string) => {
     try {
-      await axios.delete(`http://localhost:8000/blogs/${id}`, {
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      });
+      await axios.delete(
+        `https://blog-backend-cyan-xi.vercel.app/blogs/${id}`,
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      );
       toast.success("Deleted!!!");
       onFetch!();
     } catch (error) {

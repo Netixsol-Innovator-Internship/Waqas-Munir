@@ -38,16 +38,22 @@ export default function UserManagementPage() {
   async function fetchUsers(t: string) {
     try {
       const [blockedResponse, unblockedResponse] = await Promise.all([
-        axios.get("http://localhost:8000/user/?status=blocked", {
-          headers: {
-            Authorization: `Bearer ${t}`,
-          },
-        }),
-        axios.get("http://localhost:8000/user/?status=unblocked", {
-          headers: {
-            Authorization: `Bearer ${t}`,
-          },
-        }),
+        axios.get(
+          "https://blog-backend-cyan-xi.vercel.app/user/?status=blocked",
+          {
+            headers: {
+              Authorization: `Bearer ${t}`,
+            },
+          }
+        ),
+        axios.get(
+          "https://blog-backend-cyan-xi.vercel.app/user/?status=unblocked",
+          {
+            headers: {
+              Authorization: `Bearer ${t}`,
+            },
+          }
+        ),
       ]);
 
       setBlockedUsers(blockedResponse.data);
@@ -63,7 +69,7 @@ export default function UserManagementPage() {
   async function handleAction(id: string, action: "blocked" | "unblocked") {
     try {
       await axios.patch(
-        `http://localhost:8000/user/${id}`,
+        `https://blog-backend-cyan-xi.vercel.app/user/${id}`,
         {
           status: action,
         },

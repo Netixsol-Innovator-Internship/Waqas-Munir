@@ -1,7 +1,7 @@
 import { Module } from '@nestjs/common';
 import { BlogsController } from './blogs.controller';
 import { BlogsService } from './blogs.service';
-import { JwtStrategy } from 'src/user/jwt.strategy';
+import { JwtStrategy } from '..//user/jwt.strategy';
 import { MongooseModule } from '@nestjs/mongoose';
 import { Blog, BlogSchema } from './schemas/blog.schema';
 

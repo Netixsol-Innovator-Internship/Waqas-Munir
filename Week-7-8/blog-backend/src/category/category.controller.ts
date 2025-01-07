@@ -10,9 +10,9 @@ import {
 } from '@nestjs/common';
 import { CreateCategoryDto } from './dto/create-category.dto';
 import { CategoryService } from './category.service';
-import { Roles } from 'src/decorators/roles.decorator';
-import { JwtAuthGuard } from 'src/guards/jwt-auth.guard';
-import { RolesGuard } from 'src/guards/roles.guard';
+import { Roles } from '../user/roles.decorator';
+import { JwtAuthGuard } from '../user/jwt-auth.guard';
+import { RolesGuard } from '../user/roles.guard';
 
 @Controller('category')
 export class CategoryController {

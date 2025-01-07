@@ -34,7 +34,7 @@ export default function CategoryForm({
     try {
       if (category) {
         const response = await axios.patch(
-          `http://localhost:8000/category/${category._id}`,
+          `https://blog-backend-cyan-xi.vercel.app/category/${category._id}`,
           { name: values.name },
           {
             headers: {
@@ -46,7 +46,7 @@ export default function CategoryForm({
         toast.success("Category Updated Successfully");
       } else {
         const response = await axios.post(
-          "http://localhost:8000/category",
+          "https://blog-backend-cyan-xi.vercel.app/category",
           { name: values.name },
           {
             headers: {
